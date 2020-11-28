@@ -1,0 +1,12 @@
+﻿<h2 class="page-header">Your Tour Booking is SUCCESSFUL:</h2>
+
+<div>
+  <h5>View Your Cabinet:</h5>
+  <a href="../../client-cabinet/<%= customer.id %>"><%= customer.name %></a>
+</div>
+
+<p>thank you for your purchase</p>
+
+<% tour.forEach(tur => { %>
+  <p>don't forget to connect on TOUR <%= tur.id %> which STARTS: <%= tur.startDate.toDateString() %></p>
+<% }) %>

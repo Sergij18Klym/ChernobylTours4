@@ -1,0 +1,52 @@
+﻿<h2 class="page-header">Search Guides by Name</h2>
+<form action="/admin/guides" method="GET">
+  <div class="form-row">
+    <div class="form-item">
+      <label>Name</label>
+      <input type="text" name="name" value="<%= searchOptions.name %>">
+    </div>
+  </div>
+  <div class="form-row form-row-end">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+<br>
+
+<table>
+  <thead><tr>
+    <th>ID</th><th>Hired Date</th><th>Name</th><th>Phone</th><th>Salary</th>
+    <th></th>
+  </tr></thead>
+  <tbody>
+<% guides.forEach(guide => { %>
+<tr>
+  <div class="author-row">
+    <td>
+      <a class="btn btn-primary" href="/admin/guides/<%= guide.id %>"><%= guide.id %></a>
+    </td>
+    <td>
+      <div class="author-name"><%= guide.hireDate.toDateString() %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= guide.name %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= guide.phone %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= guide.salary %></div>
+    </td>
+    <td>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/admin/guides/<%= guide.id %>/edit">Edit</a>
+      <%- include('../../partials/deleteForm',
+                  { url: `/admin/guides/${guide.id}` }) %>
+    </div>
+    </td>
+  </div>
+</tr>
+<% }) %>
+  </tbody>
+</table>
+<br>
+<a class="btn btn-primary" href="/admin/guides/new">Add Guide</a>

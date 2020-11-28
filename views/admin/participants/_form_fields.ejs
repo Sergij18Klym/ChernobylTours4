@@ -1,0 +1,26 @@
+﻿<div class="form-row">
+  <div class="form-item">
+    <label>customer</label>
+    <select name="customer">
+      <% customers.forEach(customer => { %>
+        <% if (customer.id === participant.customer) { %>
+          <option selected label="<%= customer.name %>" value="<%= customer.id %>">
+        <% } else { %>
+          <option label="<%= customer.name %>" value="<%= customer.id %>">
+        <% } %>
+      <% }) %>
+    </select>
+  </div>
+  <div class="form-item">
+        <label>Tour</label>
+        <select name="tour">
+            <% tours.forEach(tour => { %>
+                <% if (tour.id === participant.tour) { %>
+                <option selected label="<%= tour.id %>" value="<%= tour.id %>">
+                    <% } else { %>
+            <option label="<%= tour.id %>" value="<%= tour.id %>">
+                <% } %>
+                <% }) %>
+        </select>
+  </div>
+</div>

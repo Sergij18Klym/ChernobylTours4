@@ -1,0 +1,29 @@
+﻿<a href="/admin/participants/">\\back</a>
+<table>
+  <caption><%= participant.id %></caption>
+  <thead><tr>
+    <th>Create Date</th>
+    <th>Customer</th><th>Tour</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>
+      <div class="author-name"><%= participant.createDate.toDateString() %></div>
+    </td>
+    <td>
+      <div class="author-name">
+        <a href="/admin/customers/<%= participant.customer.id %>"><%= participant.customer.name %></a>
+      </div>
+    </td>
+    <td>
+      <div class="author-name">
+        <a href="/admin/tours/<%= participant.tour.id %>"><%= participant.tour.id %></a>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="btn-row">
+  <a class="btn btn-primary" href="/admin/participants/<%= participant.id %>/edit">Edit</a>
+  <%- include('../../partials/deleteForm', { url: `/admin/participants/${participant.id}` }) %>
+</div>

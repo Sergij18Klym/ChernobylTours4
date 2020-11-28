@@ -1,0 +1,32 @@
+﻿<a href="/admin/customers/">\\back</a>
+<table>
+  <caption><%= customer.id %></caption>
+  <thead><tr>
+    <th>Create Date</th><th>Name</th><th>Email</th>
+    <th>Associated Participations</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>
+      <div class="author-name"><%= customer.createDate.toDateString() %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= customer.name %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= customer.email %></div>
+    </td>
+    <td>
+      <% if (customersParticipations.length > 0) { %>
+        <%- include('../../partials/participantGrid', { participants: customersParticipations }) %>
+      <% } else { %>
+        <div>~~EMPTY`~~</div>
+      <% } %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="btn-row">
+  <a class="btn btn-primary" href="/admin/customers/<%= customer.id %>/edit">Edit</a>
+  <%- include('../../partials/deleteForm', { url: `/admin/customers/${customer.id}` }) %>
+</div>

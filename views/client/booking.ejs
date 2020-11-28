@@ -1,0 +1,53 @@
+﻿<style>
+  #sbmt:disabled {
+    background: #ed0200;
+  }
+</style>
+
+<h2 class="page-header">Your Tour Booking</h2>
+
+<div>
+TOUR:<br>
+<%= tour.id %><br>
+<%= tour.tourType %><br> 
+<%= tour.startDate.toDateString() %><br>
+<%= tour.language %><br><br>
+</div>
+
+<form action="/tour-configuration" method="POST" onchange="check()">
+
+<div class="form-row">
+  <div class="form-item">
+    <label>Name</label>
+    <input type="text" name="name" value="<%= customer.name %>">
+  </div>
+  <div class="form-item">
+    <label>Email</label>
+    <input type="text" name="email" value="<%= customer.email %>">
+  </div>
+  <div class="form-item">
+    <label>Tour</label>
+    <input type="text" name="tour" value="<%= tour.id %>">
+  </div>
+</div>
+
+<input type="checkbox" id="bank">I agree with terms and PAYED the tour.
+
+<input type="text" value="<%= tour.id %>" name="tourid" style="visibility: hidden">
+
+  <div class="form-row form-row-end btn-row">
+    <a class="btn btn-danger" href="/tour-configuration">Cancel</a>
+    <button class="btn btn-primary" type="submit" id="sbmt" disabled>Create</button>
+  </div>
+
+</form>
+
+<script>
+function check() {
+  if (document.getElementById("bank").checked == true) {
+    document.getElementById("sbmt").disabled = false;
+  } else {
+    document.getElementById("sbmt").disabled = true;
+  }
+}
+</script>

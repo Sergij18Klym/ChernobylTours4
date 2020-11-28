@@ -1,0 +1,38 @@
+﻿    <div id="cabinetlink">
+      <a href="/client-cabinet">View Your Cabinet</a> |
+      <a href="/client/logout">Log Out</a>
+    </div>  
+    <div id="logfield">
+      <a href="/client/login">Log In</a> |
+      <a href="/client/register">Sign Up</a>
+    </div>
+
+<br>
+
+<h3 id="tourHeader">All Tours: <span id="spano"><%= loginStatus %></span></h3>
+
+<h3><a href="/tour-configuration/oneday-tours/">Make out for an ONEDAY tour</a></h3>
+<h3><a href="/tour-configuration/twoday-tours/">Make out for a TWODAY tour</a></h3>
+
+
+    <script>
+        var status = "<!--%= logStatus %-->";
+        if ( status === "log-out" ) {
+            document.getElementById("cabinetlink").style.visibility = "hidden";
+            document.getElementById("logfield").style.visibility = "visible";
+            document.getElementById("logfield").style.background = "magenta";
+        } else if ( status === "log-in" ) {
+            document.getElementById("cabinetlink").style.visibility = "visible";
+            document.getElementById("logfield").style.visibility = "hidden";
+        }
+    </script>
+
+<script>
+    var oingo = document.getElementById("spano").innerText;
+    console.log("YOUGET: " + oingo);
+    if (/*oingo != null ||*/ oingo != "" /*oingo.length > 0*/) {
+        document.getElementById("tourHeader").style.background = "magenta";
+    } else {
+        document.getElementById("tourHeader").style.background = "crimson";
+    }
+</script>

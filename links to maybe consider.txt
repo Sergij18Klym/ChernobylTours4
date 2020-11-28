@@ -1,0 +1,17 @@
+Build a Node.js API Authentification with JWT Tutorial
+https://www.youtube.com/watch?v=2jqok-WgelI
+
+Node.js passport login system tutorial //webdev
+https://www.youtube.com/watch?v=-RCnNyD0L-s
+
+Authentification on the web (sessions, cookies, jwt
+https://www.youtube.com/watch?v=2PPSXonhIck
+
+jwt authentification tutorial
+https://www.youtube.com/watch?v=mbsmsi7l3r4
+
+node.js with passport authentification - full project
+https://www.youtube.com/watch?v=6FOq4cUdH8k
+
+build node.js user authentification - password login //webdev
+https://www.youtube.com/watch?v=Ud5xKCYQTjM

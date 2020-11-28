@@ -1,0 +1,37 @@
+-------------INITIAL--------------------
+
+git init
+
+// create .gitignore and include there files unwanted to push
+
+git add .
+
+git commit -m "anytext"
+
+git remote add origin https://github.com/Sergij18Klym/REPOSITORY.git
+
+git branch -M main
+
+git push -u origin main
+
+// install heroku cli
+
+heroku login
+
+heroku git:remote -a chernobyl2test2
+
+git push heroku main
+
+// -> https://dashboard.heroku.com/apps/chernobyl2test2/settings
+/* addconfig vars: KEY="DATABASE_URL", VALUE="mongocloudconnection"
+
+
+--------------UPDATE-------------------
+
+git add .
+
+git commit -m "anything2"
+
+git push -f origin main
+
+git push heroku main

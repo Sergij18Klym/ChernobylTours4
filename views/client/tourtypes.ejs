@@ -1,0 +1,55 @@
+﻿<form action="/tour-configuration/<%= tourOne %>" method="GET">
+  <div class="form-row">
+    <div class="form-item">
+      <label>Language</label>
+	    <select name="language" class="form-item" onchange="langOpt()">
+		    <option value="en">en</option>
+		    <option value="ua">ua</option>
+		    <option value="ru">ru</option>
+	    </select>
+    </div>
+  </div>
+  <div class="form-row form-row-end">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+<br>
+<h3 id="tourHeader">All <%= tourOne %> Tours:</h3>
+<div id="tourlist">
+<% tours.forEach(tour => { %>
+    <a href="/tour-configuration/booking/<%= tour.id %>">
+        TOUR - <%= tour.tourType %> - <%= tour.startDate.toDateString() %>
+    </a>
+    <br>
+<% }) %>
+</div>
+
+
+<script>
+function langOpt() {
+    document.getElementById("tourlist").innerHTML = "" +
+        " <% tours.forEach(tour => { %>\n" +
+        "    <a href=\"/tour-configuration/booking/<%= tour.id %>\">\n" +
+        "      TOUR - <%= tour.startDate.toDateString() %> - <%= tour.id %>, <%= tour.tourType %>\n" +
+        "    </a>\n" +
+        "    <br>\n" +
+        "  <% }) %>";
+    document.getElementById("tourHeader").style.color = "beige";
+}
+
+document.getElementById("tourHeader").style.color = "magenta"
+
+var options = document.getElementsByName("language")[0].options,
+    name = "<%= tourLanguage %>";
+for(i = 0; i < options.length; i++){
+    if(options[i].text.indexOf(name) > -1){
+        options[i].selected = true;
+        break;
+    }
+}
+
+var tourlingua = "<%= tourLanguage %>";
+if (tourlingua == "en") { document.getElementById("tourHeader").innerHTML = "English Tours:" }
+if (tourlingua == "ru") { document.getElementById("tourHeader").innerHTML = "Russian Tours:" }
+if (tourlingua == "ua") { document.getElementById("tourHeader").innerHTML = "Ukrainian Tours:" }
+</script>

@@ -1,0 +1,47 @@
+﻿<h2 class="page-header">Search Participation</h2>
+<form action="/admin/participants" method="GET">
+
+  <div class="form-row">
+    <div class="form-item">
+      <label>Start After</label>
+      <input type="date" name="createAfter" value="<%= searchOptions.createAfter %>">
+    </div>
+    <div class="form-item">
+      <label>Start Before</label>
+      <input type="date" name="createBefore" value="<%= searchOptions.createBefore %>">
+    </div>
+  </div>
+  <div class="form-row form-row-end">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+<br>
+
+<table>
+  <thead><tr>
+    <th>ID</th><th>Create Date</th><th></th>
+  </tr></thead>
+  <tbody>
+<% participants.forEach(participant => { %>
+  <tr>
+  <div class="author-row">
+    <td>
+      <a class="btn btn-primary" href="/admin/participants/<%= participant.id %>"><%= participant.id %></a>
+    </td>
+    <td>
+      <div class="author-name"><%= participant.createDate.toDateString() %></div>
+    </td>
+    <td>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/admin/participants/<%= participant.id %>/edit">Edit</a>
+        <%- include('../../partials/deleteForm',
+        { url: `/admin/participants/${participant.id}` }) %>
+      </div>
+    </td>
+  </div>
+  </tr>
+<% }) %>
+  </tbody>
+</table>
+<br>
+<a class="btn btn-primary" href="/admin/participants/new">Add participant</a>

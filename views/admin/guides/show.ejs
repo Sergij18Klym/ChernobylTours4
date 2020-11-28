@@ -1,0 +1,35 @@
+﻿<a href="/admin/guides/">\\back</a>
+<table>
+  <caption><%= guide.id %></caption>
+  <thead><tr>
+    <th>Hired Date</th><th>Name</th><th>Phone</th><th>Salary</th>
+    <th>Associated Tours</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>
+      <div class="author-name"><%= guide.hireDate.toDateString() %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= guide.name %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= guide.phone %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= guide.salary %></div>
+    </td>
+    <td>
+      <% if (toursAssocCurrentGuide.length > 0) { %>
+        <%- include('../../partials/tourGrid', { tours: toursAssocCurrentGuide }) %>
+      <% } else { %>
+        <div>~~EMPTY`~~</div>
+      <% } %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="btn-row">
+  <a class="btn btn-primary" href="/admin/guides/<%= guide.id %>/edit">Edit</a>
+  <%- include('../../partials/deleteForm', { url: `/admin/guides/${guide.id}` }) %>
+</div>

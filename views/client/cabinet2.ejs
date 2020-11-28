@@ -1,0 +1,85 @@
+﻿<h2 class="page-header">Your Booked Tours</h2>
+
+<table>
+  <caption>Your client data: <%= user.id %></caption>
+  <thead><tr>
+    <th>Name</th><th>Email</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>
+      <div class="author-name"><%= user.name %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= user.email %></div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<br>
+<br>
+
+
+<table>
+  <caption>your Associated tours (participations):</caption>
+  <thead><tr>
+    <th>ID participants</th><th>Tour ID outta participa</th>
+  </tr></thead>
+  <tbody>
+  <% if (customersParticipations.length > 0) { %>
+    <% customersParticipations.forEach(participant => { %>
+      <tr>
+        <td>
+          <div class="author-name"><%= participant.id %></div>
+        </td>
+        <td>
+          <div class="author-name"><%= participant.tour %></div>
+        </td>
+      </tr>
+    <% }) %>
+  <% } else { %>
+    <div>~~EMPTY`~~</div>
+  <% } %>
+  </tbody>
+</table>
+
+<br>
+<br>
+
+<table>
+  <caption>your Associated tours:</caption>
+  <thead><tr>
+    <th>ID tour</th><th>Tour type</th><th>Start Date</th><th>Language</th><th></th>
+  </tr></thead>
+  <tbody>
+  <% if (customersTours.length > 0) { %>
+    <% customersTours.forEach(tour => { %>
+      <tr>
+        <td>
+          <div class="author-name"><%= tour.id %></div>
+        </td>
+        <td>
+          <div class="author-name"><%= tour.tourType %></div>
+        </td>
+        <td>
+          <div class="author-name"><%= tour.startDate.toDateString() %></div>
+        </td>
+        <td>
+          <div class="author-name"><%= tour.language %></div>
+        </td>
+        <td>
+          <a class="btn btn-primary" href="/videotours/<%= tour.id %>">View online tour</a>
+        </td>
+      </tr>
+    <% }) %>
+  <% } else { %>
+    <div>~~EMPTY`~~</div>
+  <% } %>
+  </tbody>
+</table>
+
+<br>
+<br>
+
+<a href="/client/logout" class="btn btn-secondary">Logout</a>

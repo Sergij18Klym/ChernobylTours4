@@ -1,0 +1,79 @@
+﻿<h2 class="page-header">Search Tour</h2>
+<form action="/admin/tours" method="GET">
+  <div class="form-row">
+    <div class="form-item">
+      <label>TourType</label>
+      <select name="tourType" class="form-item">
+        <option value="">All</option>
+        <option value="oneDay">oneDay</option>
+        <option value="twoDay">twoDay</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-item">
+      <label>Start After</label>
+      <input type="date" name="startAfter" value="<%= searchOptions.startAfter %>">
+    </div>
+    <div class="form-item">
+      <label>Start Before</label>
+      <input type="date" name="startBefore" value="<%= searchOptions.startBefore %>">
+    </div>
+  </div>
+  <div class="form-row form-row-end">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+<br>
+
+<table>
+  <thead><tr>
+    <th>ID</th></th><th>Create Date</th><th>TourType</th><th>Language</th><th>StartDate</th><th>Actuality</th><th></th>
+  </tr></thead>
+  <tbody>
+<% tours.forEach(tour => { %>
+  <tr>
+  <div class="author-row">
+    <td>
+      <a class="btn btn-primary" href="/admin/tours/<%= tour.id %>"><%= tour.id %></a>
+    </td>
+    <td>
+      <div class="author-name"><%= tour.createDate.toDateString() %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= tour.tourType %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= tour.language %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= tour.startDate.toDateString() %></div>
+    </td>
+    <td>
+      <div class="author-name" id="tourActuality"><%= tour.actual %></div>
+    </td>
+    <td>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/admin/tours/<%= tour.id %>/edit">Edit</a>
+        <%- include('../../partials/deleteForm',
+        { url: `/admin/tours/${tour.id}` }) %>
+      </div>
+    </td>
+  </div>
+  </tr>
+<% }) %>
+  </tbody>
+</table>
+<br>
+<a class="btn btn-primary" href="/admin/tours/new">Add Tour</a>
+
+<script>
+  var options = document.getElementsByName("tourType")[0].options,
+          name = "<%= searchOptions.tourType %>";
+  for(i = 0; i < options.length; i++){
+    if(options[i].text.indexOf(name) > -1){
+      options[i].selected = true;
+      break;
+    }
+  }
+</script>

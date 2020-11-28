@@ -1,0 +1,49 @@
+﻿<h2 class="page-header">Search Customers by Name</h2>
+<form action="/admin/customers" method="GET">
+  <div class="form-row">
+    <div class="form-item">
+      <label>Name</label>
+      <input type="text" name="name" value="<%= searchOptions.name %>">
+    </div>
+  </div>
+  <div class="form-row form-row-end">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+<br>
+
+<table>
+  <thead><tr>
+    <th>ID</th><th>Create Date</th><th>Name</th><th>Email</th>
+    <th></th>
+  </tr></thead>
+  <tbody>
+<% customers.forEach(customer => { %>
+<tr>
+  <div class="author-row">
+    <td>
+      <a class="btn btn-primary" href="/admin/customers/<%= customer.id %>"><%= customer.id %></a>
+    </td>
+    <td>
+      <div class="author-name"><%= customer.createDate.toDateString() %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= customer.name %></div>
+    </td>
+    <td>
+      <div class="author-name"><%= customer.email %></div>
+    </td>
+    <td>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/admin/customers/<%= customer.id %>/edit">Edit</a>
+      <%- include('../../partials/deleteForm',
+                  { url: `/admin/customers/${customer.id}` }) %>
+    </div>
+    </td>
+  </div>
+</tr>
+<% }) %>
+  </tbody>
+</table>
+<br>
+<a class="btn btn-primary" href="/admin/customers/new">Add customer</a>

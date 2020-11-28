@@ -1,0 +1,36 @@
+﻿<header>
+  <nav class="header-nav">
+    <a class="header-title" href="/">Chernobyl</a>
+    <br>
+    <a href="/videotours/undefined">VideoConference</a>
+    <br>
+    <span id="loginStatus" style="visibility: visible;"><!--%= loginStatus %--></span>
+    <div id="cabinetlink">
+      <a href="/client-cabinet">View Your Cabinet</a> |
+      <a href="/client/logout">Log Out</a> --
+    </div>
+    <div id="logfield">
+      <a href="/client/login">Log In</a> |
+      <a href="/client/register">Sign Up</a>
+    </div>
+    <ul>
+      <li><a href="/admin/tours">Tours</a></li>
+      <li><a href="/admin/tours/new">Add Tour</a></li>
+      <li><a href="/admin/customers">Customers</a></li>
+      <li><a href="/admin/customers/new">Add Customer</a></li>
+      <li><a href="/admin/participants">Participants</a></li>
+      <li><a href="/admin/participants/new">Add Participant</a></li>
+      <li><a href="/admin/guides">Guides</a></li>
+      <li><a href="/admin/guides/new">Add Guide</a></li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  var loginStatus = document.getElementById("loginStatus").innerText;
+  if (loginStatus != "") {
+    document.getElementById("cabinetlink").style.background = "magenta";
+  } else {
+    document.getElementById("logfield").style.background = "crimson";
+  }
+</script>

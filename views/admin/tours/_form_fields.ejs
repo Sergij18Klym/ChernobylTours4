@@ -1,0 +1,57 @@
+﻿<div class="form-row">
+  <div class="form-item">
+    <label>TourType</label>
+    <select name="tourType">
+      <% if (tour.tourType === "oneDay") { %>
+        <option selected label="oneDay" value="oneDay">
+        <option label="twoDay" value="twoDay">
+      <% } else if (tour.tourType === "twoDay") { %>
+        <option label="oneDay" value="oneDay">
+        <option selected label="twoDay" value="twoDay">
+      <% } %>
+    </select>
+  </div>
+  <div class="form-item">
+    <label>Guide</label>
+      <select name="guide">
+            <% guides.forEach(guide => { %>
+                <% if (guide.id === tour.guide) { %>
+                <option selected label="<%= guide.name %>" value="<%= guide.id %>">
+                    <% } else { %>
+            <option label="<%= guide.name %>" value="<%= guide.id %>">
+                <% } %>
+                <% }) %>
+      </select>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-item">
+    <label>Start Date</label>
+    <input type="date" name="startDate"
+          value="<%= tour.startDate == null ? '' : tour.startDate.toISOString().split('T')[0] %>">
+  </div>
+  <div class="form-item">
+    <label>Actuality</label>
+    <input type="checkbox" name="actual"
+           value="<% tour.actual %>">
+  </div>
+  <div class="form-item">
+    <label>Language</label>
+      <select name="language">
+            <% if (tour.language === "en") { %>
+          <option selected label="en" value="en">
+          <option label="ua" value="ua">
+          <option label="ru" value="ru">
+              <% } else if (tour.language === "ua") { %>
+          <option label="en" value="en">
+          <option selected label="ua" value="ua">
+          <option label="ru" value="ru">
+              <% } else if (tour.language === "ru") { %>
+          <option label="en" value="en">
+          <option label="ua" value="ua">
+          <option selected label="ru" value="ru">
+              <% } %>
+      </select>
+  </div>
+</div>
